@@ -65,6 +65,7 @@ const SCENES = [
 
 const VISUAL_EFFECTS = [
   { id: 'vignette', name: 'تظليل الحواف', prompt: 'Add a subtle, dark vignette effect around the edges for focus', icon: '🎯' },
+  { id: 'retouch', name: 'إزالة الشوائب', prompt: "Remove any minor imperfections, dust, scratches, and blemishes from the product image for a clean, flawless, and polished finish. Retouch the product smoothly while preserving its natural texture.", icon: '🪄' },
   { id: 'grain', name: 'حبيبات فيلم', prompt: 'Add a light, fine film grain texture for a vintage feel', icon: '🎞️' },
   { id: 'flare', name: 'توهج عدسة', prompt: 'Add a warm-toned cinematic anamorphic lens flare originating from the side of the image', icon: '🌟' },
   { id: 'color_grade', name: 'تدرج لوني سينمائي', prompt: 'Apply cinematic color grading with a slight cool tone and increased contrast.', icon: '🎥' },
@@ -87,6 +88,7 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
   const [exportScale, setExportScale] = useState<number>(1);
   const [bokehLevel, setBokehLevel] = useState(10);
   const [textureLevel, setTextureLevel] = useState(10);
+  const [overlayText, setOverlayText] = useState('');
   
   // State for dropdowns to act as controlled inputs (resettable)
   const [selectedPreset, setSelectedPreset] = useState('');
@@ -97,6 +99,13 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
     e.preventDefault();
     if (prompt.trim()) {
       onGenerate(prompt);
+    }
+  };
+
+  const handleApplyText = () => {
+    if (overlayText.trim()) {
+        const textPrompt = `Add the text "${overlayText}" to the image as an elegant overlay. Use a suitable font and color that complements the image. Apply a subtle drop shadow for readability. Place it in a visually pleasing location, like the bottom-left or bottom-right corner.`;
+        onGenerate(textPrompt);
     }
   };
 
@@ -325,6 +334,33 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
                 <span>{effect.name}</span>
               </button>
             ))}
+          </div>
+
+          {/* Text Overlay */}
+          <div className="mt-4 pt-4 border-t border-zinc-800/50">
+            <label htmlFor="text-overlay-input" className="flex justify-between items-center text-sm font-medium text-zinc-300 mb-2">
+              <span>✍️ إضافة نص</span>
+            </label>
+            <div className="flex items-center gap-3">
+              <input
+                id="text-overlay-input"
+                type="text"
+                placeholder="اكتب النص هنا..."
+                value={overlayText}
+                onChange={(e) => setOverlayText(e.target.value)}
+                disabled={!hasImage || isProcessing}
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg p-2 h-9 text-zinc-200 placeholder-zinc-500 focus:outline-none focus:ring-1 focus:ring-yellow-500/50 text-sm"
+                dir="rtl"
+              />
+               <Button 
+                variant="secondary" 
+                onClick={handleApplyText} 
+                disabled={!hasImage || isProcessing || !overlayText.trim()}
+                className="px-4 py-2 text-xs h-9 shrink-0"
+              >
+                تطبيق
+              </Button>
+            </div>
           </div>
 
           {/* Texture Detail Slider */}
