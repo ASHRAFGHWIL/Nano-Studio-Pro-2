@@ -1,0 +1,5 @@
+{
+  "name": "Nano Studio Pro",
+  "description": "استوديو تصوير منتجات سينمائي ومحرر صور مدعوم بواسطة Gemini 2.5 Flash Image. قم برفع صور المنتجات وقم بتحويلها باستخدام اللغة الطبيعية.",
+  "requestFramePermissions": []
+}
