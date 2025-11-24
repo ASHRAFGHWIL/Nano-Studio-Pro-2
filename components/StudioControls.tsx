@@ -60,6 +60,45 @@ const ETSY_PRESETS: Preset[] = [
   },
 ];
 
+const LANTERN_ANGLES: Preset[] = [
+  { id: 'glow_reveal', name: 'الكشف التدريجي (Glow Reveal)', prompt: "Create a magical 'glow reveal' shot for the lit wooden lantern. The sequence should feel like the lantern is first off in a dark setting, and then the internal light suddenly turns on. The camera remains static. The resulting image should capture the moment the beautiful, warm glow blooms from within, creating a magical and captivating effect.", icon: '✨' },
+  { id: 'shadow_pattern', name: 'نمط الظل على الحائط', prompt: "Position the lit wooden lantern close to a wall. Capture the beautiful and intricate shadow patterns it casts on the wall from a 45-degree angle. This is a powerful shot that should instantly showcase the lantern's design and appeal.", icon: '🧱' },
+  { id: 'top_glow', name: 'التوهج العلوي', prompt: "Capture a top-down shot, looking directly into the lit wooden lantern from above. This angle should reveal the internal engravings and the beautiful distribution of light between the layers of wood.", icon: '🔽' },
+  { id: 'under_lighting', name: 'الإضاءة السفلية', prompt: "Slightly elevate the lit wooden lantern 1-2 cm off the surface it's on. The shot should focus on the light spilling from underneath, creating a 'halo light' effect around the base. This should result in a creative and ethereal look.", icon: '😇' },
+  { id: 'side_silhouette', name: 'الصورة الظلية الجانبية', prompt: "Create a side silhouette shot of the lit wooden lantern. Place the lantern to the side of the frame with a faintly lit background. The final image should show the full silhouette of the lantern, with the illuminated engravings standing out clearly and beautifully.", icon: '👤' },
+  { id: 'lens_flare', name: 'توهج العدسة الدافئ', prompt: "Create a soft, cinematic shot with a warm lens flare. Position the camera so it's slightly aimed towards a small background light source (like a candle or LED). Capture a subtle, warm lens flare effect that complements the lantern's own glow. The result should be very soft and cinematic.", icon: '☀️' },
+  { id: 'closeup_glow', name: 'لقطة مقربة للتوهج الداخلي', prompt: "Create an extreme close-up shot focusing on one of the lantern's engraved openings. The perspective should make it feel like we are looking inside, with the light beautifully emanating from within. This stunning shot should highlight the intricate details of the internal layers.", icon: '🔎' },
+  { id: 'reflection_shot', name: 'لقطة الانعكاس', prompt: "Place the lit wooden lantern on a reflective surface (like glass, polished metal, or calm water). Capture the classic reflection shot of the illuminated lantern. This should create a high-prestige, elegant, and classic look.", icon: '💧' },
+  { id: 'low_angle_epic', name: 'الزاوية المنخفضة الملحمية', prompt: "Shoot the lit wooden lantern from a very low angle, approximately 20 degrees. This should make the lantern look epic, large, and majestic, especially if the background is a dark sky or dark trees.", icon: '🎬' },
+  { id: 'nature_blend', name: 'الاندماج مع الطبيعة', prompt: "Place the lit wooden lantern in a natural setting (on a rock, tree stump, or sand). Allow it to illuminate its surroundings. Capture a wide-angle shot that reveals the full cinematic atmosphere of the lantern blending with the ambient nature around it.", icon: '🌲' },
+];
+
+const WOOD_ANGLES: Preset[] = [
+  { id: 'macro_texture', name: 'ملمس ماكرو', prompt: "Create an extreme close-up macro shot of the wood. The focus should be razor-sharp on the wood grain and the clean laser-cut details. This shot needs to convey high quality and craftsmanship to the viewer.", icon: '🔬' },
+  { id: 'highlight_45', name: 'إبراز بزاوية 45 درجة', prompt: "Place the product on a wooden table. Position a single light source at a 45-degree angle to the product, creating a highlight on one half and casting a soft shadow on the other. This angle is excellent for revealing the depth of laser engravings or carvings.", icon: '📐' },
+  { id: 'top_shot_shadow', name: 'لقطة علوية مع نمط ظل', prompt: "For an internally lit product, capture a direct top-down shot. The focus should be on the intricate patterns the light creates on the surface below. Reveal the shadow play and the design.", icon: '🎯' },
+  { id: 'side_profile', name: 'ملف جانبي', prompt: "Shoot a clean side profile of the product to clearly show its thickness, the number of layers (especially for MDF products), and the smoothness of the edges. This shot is crucial for demonstrating the product's construction quality.", icon: '↔️' },
+  { id: 'parallax_move', name: 'حركة بارالاكس', prompt: "Create a cinematic parallax effect. Keep the product stationary and in sharp focus while the distant background appears to move slightly from side to side. This creates a sense of depth and high production value.", icon: '🎥' },
+  { id: 'under_glow', name: 'توهج سفلي', prompt: "For an internally lit product, elevate it 1-2 cm off the surface. Place a small light source directly underneath it. Capture the ethereal glow that emanates from the base, illuminating all the layers from below for a stunning, magical effect.", icon: '💡' },
+  { id: 'center_symmetry', name: 'تماثل مركزي', prompt: "For geometrically symmetrical designs, position the camera perfectly on the central axis of symmetry. This creates a powerful, balanced, and visually striking shot that gives the product a high-end, 'global brand' feel.", icon: '🏛️' },
+  { id: 'clean_edge_closeup', name: 'لقطة مقربة للحواف النظيفة', prompt: "Create a detailed close-up shot focused on the laser-cut edges. The edges must look perfectly clean, sharp, and free of any burn marks or residue. This shot is a key quality indicator for discerning customers.", icon: '✨' },
+  { id: 'low_angle_dramatic', name: 'زاوية منخفضة درامية', prompt: "Shoot the product from a very low angle, making it appear monumental and impressive, like a large building. The background should be a distant sky or dark trees to enhance the sense of scale and prestige.", icon: '🎬' },
+  { id: 'simulated_rotation', name: 'دوران محاكى', prompt: "Simulate a 360-degree product view by generating three distinct shots from different angles: a front view, a view from 30 degrees to the right, and a view from 30 degrees to the left. All three shots must maintain consistent lighting and background to appear as if the product is rotating.", icon: '🔄' },
+];
+
+const NATURE_SCENES: Preset[] = [
+  { id: 'golden_hour', name: 'لقطة Golden Hour خلفية شمسية', prompt: 'Place the product on a rock or tree stump. Position the sun directly behind it to create a soft rim light around the edges. Add a slow, subtle Dolly-In camera movement.', icon: '🌅' },
+  { id: 'low_angle_grass', name: 'لقطة أرضية Low Angle مع الأعشاب', prompt: 'Place the camera very close to the ground. Put blades of grass in the foreground, out of focus. The product should be in the middle, tack sharp. A gentle breeze should create cinematic movement in the grass.', icon: '🌿' },
+  { id: 'rain_mist', name: 'لقطة Rain Mist', prompt: 'Create a scene with a light water spray or natural fog. Add water droplets on the product. Use a strong backlight to make the mist and droplets sparkle around the product.', icon: '💧' },
+  { id: 'water_reflection', name: 'لقطة Reflection على مياه', prompt: 'Place the product on a calm water surface. Capture a top-down shot or a 45-degree angle shot. A gentle ripple in the water should create a beautiful distortion in the reflection.', icon: '🏞️' },
+  { id: 'forest_path', name: 'لقطة داخل الغابة', prompt: 'Place the product in the middle of a narrow forest path. The tree leaves should create a natural vignette around the frame. Add a slow 180-degree Orbit camera movement.', icon: '🌲' },
+  { id: 'rocks_sun_flare', name: 'لقطة بين الصخور + Sun Flare', prompt: 'Place the product between raw, rugged rocks. Use a low camera angle pointing towards the sun to create a professional lens flare and a beautiful glint.', icon: '🪨' },
+  { id: 'slow_mo_wind', name: 'لقطة Slow Motion ريح بتحرك البيئة', prompt: 'The product should be completely static. Create a slow-motion effect where everything around it (trees, sand, leaves) is in motion due to wind. The scene should feel like the product is stationary amidst a dynamic, moving nature.', icon: '💨' },
+  { id: 'waterfall_bg', name: 'لقطة Waterfall Background', prompt: 'Place the product in the foreground. A waterfall should be visible in the background, out of focus. Use a fast shutter speed to freeze the water droplets, or a slow shutter speed for a soft, flowing motion.', icon: '🌊' },
+  { id: 'fog_reveal', name: 'لقطة Fog/Smoke طبيعي', prompt: 'In a mountainous or foggy area, simulate a camera pushing through the fog to gradually reveal the product, as if it is emerging from the clouds.', icon: '🌫️' },
+  { id: 'night_shoot_warm', name: 'لقطة Night Shoot مع إضاءة دافئة', prompt: 'Place the product on a stone at night. Use a small, warm light source hidden behind it. The background should be a clear night sky with stars or a moon. The shot should be very cinematic.', icon: '🌌' },
+];
+
 const PRESETS: Preset[] = [
   { id: 'cinematic', name: 'إضاءة سينمائية', prompt: 'Add cinematic studio lighting, dramatic contrast, professional product photography style', icon: '🎬' },
   { id: 'softbox', name: 'سوفت بوكس ناعم', prompt: 'Place on a clean white background with softbox lighting, highly detailed, commercial look', icon: '💡' },
@@ -151,7 +190,7 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
   canUndo,
   canRedo,
 }) => {
-  const [prompt, setPrompt] = useState('Place the product on a dark, rustic wooden surface with a visible grain and a matte finish. Use soft, directional lighting to create a moody and luxurious atmosphere.');
+  const [prompt, setPrompt] = useState('Apply a subtle, warm accent light in the distant background, simulating the soft glow of a single candle. This should add depth and a cozy atmosphere without directly lighting the product.');
   const [exportFormat, setExportFormat] = useState<'png' | 'jpeg' | 'webp'>('png');
   const [exportScale, setExportScale] = useState<number>(1);
   const [bokehLevel, setBokehLevel] = useState(10);
@@ -161,6 +200,9 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
   // State for dropdowns to act as controlled inputs (resettable)
   const [selectedPreset, setSelectedPreset] = useState('');
   const [selectedEtsyPreset, setSelectedEtsyPreset] = useState('');
+  const [selectedLanternAngle, setSelectedLanternAngle] = useState('');
+  const [selectedWoodAngle, setSelectedWoodAngle] = useState('');
+  const [selectedNatureScene, setSelectedNatureScene] = useState('');
   const [selectedCamera, setSelectedCamera] = useState('');
   const [selectedScene, setSelectedScene] = useState('');
 
@@ -182,7 +224,7 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
     setPrompt(newPrompt);
   };
 
-  const handleDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>, type: 'preset' | 'camera' | 'scene' | 'etsy') => {
+  const handleDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>, type: 'preset' | 'camera' | 'scene' | 'etsy' | 'lantern' | 'wood' | 'nature') => {
     const value = e.target.value;
     if (!value) return;
 
@@ -192,6 +234,9 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
     if (type === 'camera') setSelectedCamera(value);
     if (type === 'scene') setSelectedScene(value);
     if (type === 'etsy') setSelectedEtsyPreset(value);
+    if (type === 'lantern') setSelectedLanternAngle(value);
+    if (type === 'wood') setSelectedWoodAngle(value);
+    if (type === 'nature') setSelectedNatureScene(value);
   };
 
   const handleDownload = () => {
@@ -305,6 +350,78 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
               {ETSY_PRESETS.map((preset) => (
                 <option key={preset.id} value={preset.prompt}>
                   {preset.icon} {preset.name}
+                </option>
+              ))}
+            </select>
+            <ChevronIcon />
+          </div>
+        </div>
+
+        {/* Lantern Angles Dropdown */}
+        <div>
+          <label className="block text-xs uppercase tracking-wider text-zinc-500 font-semibold mb-2">
+            🎥✨ زوايا للفوانيس
+          </label>
+          <div className="relative">
+            <select
+              value={selectedLanternAngle}
+              onChange={(e) => handleDropdownChange(e, 'lantern')}
+              disabled={!hasImage || isProcessing}
+              className={selectClass}
+              dir="rtl"
+            >
+              <option value="">اختر زاوية سينمائية...</option>
+              {LANTERN_ANGLES.map((angle) => (
+                <option key={angle.id} value={angle.prompt}>
+                  {angle.icon} {angle.name}
+                </option>
+              ))}
+            </select>
+            <ChevronIcon />
+          </div>
+        </div>
+        
+        {/* Wood Angles Dropdown */}
+        <div>
+          <label className="block text-xs uppercase tracking-wider text-zinc-500 font-semibold mb-2">
+            🎬 زوايا سينمائية للخشب
+          </label>
+          <div className="relative">
+            <select
+              value={selectedWoodAngle}
+              onChange={(e) => handleDropdownChange(e, 'wood')}
+              disabled={!hasImage || isProcessing}
+              className={selectClass}
+              dir="rtl"
+            >
+              <option value="">اختر زاوية خشبية...</option>
+              {WOOD_ANGLES.map((angle) => (
+                <option key={angle.id} value={angle.prompt}>
+                  {angle.icon} {angle.name}
+                </option>
+              ))}
+            </select>
+            <ChevronIcon />
+          </div>
+        </div>
+
+        {/* Nature Scenes Dropdown */}
+        <div>
+          <label className="block text-xs uppercase tracking-wider text-zinc-500 font-semibold mb-2">
+            🏞️ مشاهد طبيعية سينمائية
+          </label>
+          <div className="relative">
+            <select
+              value={selectedNatureScene}
+              onChange={(e) => handleDropdownChange(e, 'nature')}
+              disabled={!hasImage || isProcessing}
+              className={selectClass}
+              dir="rtl"
+            >
+              <option value="">اختر مشهداً طبيعياً...</option>
+              {NATURE_SCENES.map((scene) => (
+                <option key={scene.id} value={scene.prompt}>
+                  {scene.icon} {scene.name}
                 </option>
               ))}
             </select>
