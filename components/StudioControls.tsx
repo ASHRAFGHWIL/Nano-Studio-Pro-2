@@ -15,6 +15,13 @@ interface StudioControlsProps {
   canRedo: boolean;
 }
 
+const ETSY_PRESETS: Preset[] = [
+  { id: 'etsy_wood', name: 'ألوان Etsy للخشب', prompt: 'Professional e-commerce photography for a wooden product, suitable for Etsy. Place on a bright, clean, slightly off-white background. Use soft, diffused lighting to minimize harsh shadows and enhance the natural wood grain and texture. The image should have a warm, bright, and airy feel, with sharp focus and true-to-life colors.', icon: '🪵' },
+  { id: 'laser_engraving', name: 'تحسين النقوش بالليزر', prompt: 'Apply professional lighting adjustments to the wooden product to make laser engravings stand out. Slightly brighten the overall image. Increase contrast for more pop. Recover detail in the brightest areas by lowering highlights. Reveal texture in dark areas by lifting shadows. Set clean white points and deep black points. The result should be sharp, clear engravings and a natural glow on the wood.', icon: '✒️' },
+  { id: 'etsy_color_mix', name: 'مزيج ألوان Etsy', prompt: "Apply an expert color grade designed for Etsy wood products. Make the wood color rich, warm, and luxurious by enhancing its natural browns and oranges. Remove any unpleasant yellow color cast, replacing it with a sophisticated warm glow. The overall image should feel vibrant, high-quality, and appealing to an American e-commerce audience. Keep the background clean and bright.", icon: '🌈' },
+  { id: 'laser_details', name: 'إبراز تفاصيل الليزر', prompt: "Apply subtle but professional finishing effects to the wooden product. Slightly increase clarity to make laser-cut edges more defined. Significantly enhance the texture to bring out the fine details of the engraved patterns. Add a touch of dehaze to remove any atmospheric softness. The result should be a crisp, high-definition look that makes the craftsmanship stand out.", icon: '💎' },
+];
+
 const PRESETS: Preset[] = [
   { id: 'cinematic', name: 'إضاءة سينمائية', prompt: 'Add cinematic studio lighting, dramatic contrast, professional product photography style', icon: '🎬' },
   { id: 'softbox', name: 'سوفت بوكس ناعم', prompt: 'Place on a clean white background with softbox lighting, highly detailed, commercial look', icon: '💡' },
@@ -92,6 +99,7 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
   
   // State for dropdowns to act as controlled inputs (resettable)
   const [selectedPreset, setSelectedPreset] = useState('');
+  const [selectedEtsyPreset, setSelectedEtsyPreset] = useState('');
   const [selectedCamera, setSelectedCamera] = useState('');
   const [selectedScene, setSelectedScene] = useState('');
 
@@ -113,7 +121,7 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
     setPrompt(newPrompt);
   };
 
-  const handleDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>, type: 'preset' | 'camera' | 'scene') => {
+  const handleDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>, type: 'preset' | 'camera' | 'scene' | 'etsy') => {
     const value = e.target.value;
     if (!value) return;
 
@@ -122,6 +130,7 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
     if (type === 'preset') setSelectedPreset(value);
     if (type === 'camera') setSelectedCamera(value);
     if (type === 'scene') setSelectedScene(value);
+    if (type === 'etsy') setSelectedEtsyPreset(value);
   };
 
   const handleDownload = () => {
@@ -217,6 +226,30 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
         </Button>
 
         <hr className="border-zinc-800" />
+
+        {/* Etsy Presets Dropdown */}
+        <div>
+          <label className="block text-xs uppercase tracking-wider text-zinc-500 font-semibold mb-2">
+            ✨ تحسينات Etsy للخشب
+          </label>
+          <div className="relative">
+            <select
+              value={selectedEtsyPreset}
+              onChange={(e) => handleDropdownChange(e, 'etsy')}
+              disabled={!hasImage || isProcessing}
+              className={selectClass}
+              dir="rtl"
+            >
+              <option value="">اختر تحسيناً لـ Etsy...</option>
+              {ETSY_PRESETS.map((preset) => (
+                <option key={preset.id} value={preset.prompt}>
+                  {preset.icon} {preset.name}
+                </option>
+              ))}
+            </select>
+            <ChevronIcon />
+          </div>
+        </div>
 
         {/* Camera Moves Dropdown */}
         <div>
