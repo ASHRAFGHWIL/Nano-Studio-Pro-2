@@ -22,6 +22,42 @@ const ETSY_PRESETS: Preset[] = [
   { id: 'etsy_color_mix', name: 'مزيج ألوان Etsy', prompt: "Apply an expert color grade designed for Etsy wood products. Make the wood color rich, warm, and luxurious by enhancing its natural browns and oranges. Remove any unpleasant yellow color cast, replacing it with a sophisticated warm glow. The overall image should feel vibrant, high-quality, and appealing to an American e-commerce audience. Keep the background clean and bright.", icon: '🌈' },
   { id: 'laser_details', name: 'إبراز تفاصيل الليزر', prompt: "Apply subtle but professional finishing effects to the wooden product. Slightly increase clarity to make laser-cut edges more defined. Significantly enhance the texture to bring out the fine details of the engraved patterns. Add a touch of dehaze to remove any atmospheric softness. The result should be a crisp, high-definition look that makes the craftsmanship stand out.", icon: '💎' },
   { id: 'etsy_glow', name: 'نسخة التوهج للفوانيس', prompt: 'For an internally lit wooden lantern, create a magical "glow edition". Enhance the light source to emit a soft, beautiful, blooming glow that spills onto the surrounding surfaces. The light should be warm and inviting, not harsh. Increase the overall image contrast to make the glow pop against the darker wood, creating a dramatic, high-end look.', icon: '🌟' },
+  { 
+    id: 'internal_glow', 
+    name: 'ضوء داخلي للفوانيس', 
+    prompt: "For an internally lit product, such as a wooden lantern, simulate a soft, diffused internal light source. The goal is to create a beautiful, warm glow from within, completely avoiding harsh hotspots or distracting bright points of light. The light should feel natural and inviting, gently illuminating the intricate details and engravings of the product. The final image should have a magical, premium quality, with a soft bloom effect from the internal light.", 
+    icon: '🏮' 
+  },
+  { 
+    id: 'warm_internal_glow', 
+    name: 'توهج داخلي دافئ', 
+    prompt: 'Apply a soft, warm internal glow to the product, simulating an internal light source like a lantern. The light should look magical, soft, and inviting, ensuring it is not harsh or overexposed. Enhance the natural warmth of the light and create a gentle bloom effect around the light source, while keeping the product\'s details sharp and clear.', 
+    icon: '🕯️' 
+  },
+  { 
+    id: 'light_diffusion', 
+    name: 'تنعيم الضوء (Diffusion)', 
+    prompt: "Simulate the effect of diffusing a strong light source through a sheer white fabric, like a curtain or a professional diffuser. This creates a very soft, even light across the product, minimizing harsh shadows and glare. The light should gently wrap around the object, enhancing its texture and form. The final image should have a bright, clean, and professional e-commerce feel, perfect for showcasing natural materials like wood.", 
+    icon: '☁️' 
+  },
+  { 
+    id: 'pro_angle_setup', 
+    name: 'زاوية تصوير احترافية', 
+    prompt: "Recreate a professional, cinematic product photography setup. Use a single key light source positioned at a 45-degree angle to the right of the product. The camera should be positioned to create a 120-degree angle between the light source and the camera lens. The camera's vertical position should be at eye-level, aimed at the midpoint of the product's height. This setup should create soft, directional shadows that define the product's form, add depth, and result in a high-end, cinematic look. The background should remain clean and complementary.", 
+    icon: '📐' 
+  },
+  {
+    id: 'pro_wood_color_grade',
+    name: 'تدرج لوني احترافي للخشب',
+    prompt: "Apply a professional color grade to the wooden product, simulating these specific Lightroom adjustments to achieve a warm and sophisticated finish: Exposure +0.15, Contrast +10, Highlights -30, Shadows +20, Whites +10, Blacks -20, Temperature +4 (warm), Clarity -5, Texture +10, Vibrance +10. The result should be a rich, warm, and highly refined wood color, perfect for a premium product listing.",
+    icon: '🖌️'
+  },
+  {
+    id: 'night_glow_shot',
+    name: 'تصوير ليلي للمنتجات المضيئة',
+    prompt: "Create a professional night photography shot for an internally lit product. The scene should be completely dark with no ambient light, except for a single, very faint backlight to subtly define the product's silhouette. Place the product on a dark, matte, non-reflective surface to capture and emphasize the beautiful glow spilling from it. Simulate a high-end camera with a wide aperture lens (like f/1.8) and a low-noise sensor (like ISO 400-800) to produce a clean, sharp, and noise-free image. The final result should be dramatic and high-quality, focusing entirely on the product's self-illumination and creating a respectable, prominent glow effect.",
+    icon: '🌌'
+  },
 ];
 
 const PRESETS: Preset[] = [
@@ -71,6 +107,14 @@ const GRADIENTS = [
   { name: 'Luxury', class: 'from-slate-900 to-slate-700', prompt: 'Change background to a luxury dark gradient' },
 ];
 
+const NATURAL_BACKGROUNDS = [
+  { id: 'dark_wood', name: 'خشب غامق', prompt: 'Place the product on a dark, rustic wooden surface with a visible grain and a matte finish. Use soft, directional lighting to create a moody and luxurious atmosphere.', icon: '🪵' },
+  { id: 'kraft_paper', name: 'ورق كرافت', prompt: 'Place the product on a clean, slightly textured sheet of kraft paper. The lighting should be bright and even, creating a minimalist and eco-friendly aesthetic.', icon: '📜' },
+  { id: 'linen_cloth', name: 'قماش كتاني', prompt: 'Place the product on a draped piece of neutral-colored linen cloth with natural wrinkles and texture. Use soft, diffused daylight for a gentle, organic feel.', icon: '☁️' },
+  { id: 'stone_surface', name: 'سطح حجري', prompt: 'Place the product on a natural stone surface, like slate or rough granite. The lighting should be crisp, highlighting the texture of the stone for a sophisticated, earthy look.', icon: '🪨' },
+  { id: 'matte_black', name: 'كرتون أسود مطفي', prompt: 'Place the product on a smooth, matte black background. Use a single key light to sculpt the product\'s shape, creating a dramatic, high-contrast look with deep shadows and no reflections.', icon: '⚫' },
+];
+
 const SCENES = [
   { id: 'studio', name: 'ستوديو أبيض', prompt: 'Place object on a white infinity curve studio background with soft shadows' },
   { id: 'desk', name: 'مكتب خشبي', prompt: 'Place object on a clean wooden desk with a blurred office background' },
@@ -78,7 +122,16 @@ const SCENES = [
   { id: 'nature', name: 'طبيعة ضبابية', prompt: 'Place object in a misty forest floor with shallow depth of field' },
 ];
 
+const ACCENT_LIGHTS: Preset[] = [
+    { id: 'candle_accent', name: 'ضوء شمعة خلفي', prompt: 'Add a subtle, warm accent light in the distant background, simulating the soft glow of a single candle. This should add depth and a cozy atmosphere without directly lighting the product.', icon: '🕯️' },
+    { id: 'soft_lamp_accent', name: 'مصباح دافئ ناعم', prompt: 'Introduce a soft, diffused, warm accent light in the background, as if from a small, out-of-view table lamp. This should create a gentle pool of light that enhances the scene\'s depth and warmth.', icon: '💡' },
+    { id: 'specular_reflection', name: 'انعكاس ضوئي', prompt: 'Create a single, small, specular highlight in the background, simulating a glint of light reflected from a distant metallic or glass object. This should add a subtle, artistic point of interest and a touch of luxury.', icon: '🪞' },
+    { id: 'cool_night_light', name: 'إضاءة ليلية هادئة', prompt: 'Add a very soft, cool-toned accent light in the background, like the gentle glow from a small LED night light. This should add a touch of modern, calm ambiance to the scene.', icon: '🌙' },
+];
+
 const VISUAL_EFFECTS = [
+  { id: 'frosted_glass', name: 'خلفية زجاجية بلورية', prompt: 'Apply a subtle frosted glass effect to the background of the image. This effect should gently blur and soften the background, making the product stand out more prominently while maintaining a clean and professional overall aesthetic. The main product must remain perfectly sharp and in focus.', icon: '🧊' },
+  { id: 'professional_look', name: 'مظهر احترافي', prompt: 'Apply a subtle frosted glass effect to the background, making the product stand out more while maintaining a professional look. Ensure the product itself remains perfectly sharp and in focus.', icon: '💼' },
   { id: 'vignette', name: 'تظليل الحواف', prompt: 'Add a subtle, dark vignette effect around the edges for focus', icon: '🎯' },
   { id: 'retouch', name: 'إزالة الشوائب', prompt: "Remove any minor imperfections, dust, scratches, and blemishes from the product image for a clean, flawless, and polished finish. Retouch the product smoothly while preserving its natural texture.", icon: '🪄' },
   { id: 'grain', name: 'حبيبات فيلم', prompt: 'Add a light, fine film grain texture for a vintage feel', icon: '🎞️' },
@@ -98,7 +151,7 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
   canUndo,
   canRedo,
 }) => {
-  const [prompt, setPrompt] = useState('');
+  const [prompt, setPrompt] = useState('Place the product on a dark, rustic wooden surface with a visible grain and a matte finish. Use soft, directional lighting to create a moody and luxurious atmosphere.');
   const [exportFormat, setExportFormat] = useState<'png' | 'jpeg' | 'webp'>('png');
   const [exportScale, setExportScale] = useState<number>(1);
   const [bokehLevel, setBokehLevel] = useState(10);
@@ -335,6 +388,21 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
               />
             ))}
           </div>
+          
+          <div className="flex flex-wrap gap-2 mb-3">
+            {NATURAL_BACKGROUNDS.map((bg) => (
+              <button
+                key={bg.id}
+                onClick={() => handlePromptSet(bg.prompt)}
+                disabled={!hasImage || isProcessing}
+                className="flex-grow text-xs text-center p-2 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-zinc-700/50 flex items-center justify-center gap-1.5"
+                title={bg.name}
+              >
+                <span>{bg.icon}</span>
+                <span>{bg.name}</span>
+              </button>
+            ))}
+          </div>
 
           <div className="relative">
             <select
@@ -344,7 +412,7 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
               className={selectClass}
               dir="rtl"
             >
-              <option value="">اختر مشهداً...</option>
+              <option value="">اختر مشهداً آخر...</option>
               {SCENES.map((scene) => (
                 <option key={scene.id} value={scene.prompt}>
                   🏞️ {scene.name}
@@ -352,6 +420,29 @@ export const StudioControls: React.FC<StudioControlsProps> = ({
               ))}
             </select>
             <ChevronIcon />
+          </div>
+        </div>
+
+        <hr className="border-zinc-800" />
+        
+        {/* Accent Light Section */}
+        <div>
+          <label className="block text-xs uppercase tracking-wider text-zinc-500 font-semibold mb-3">
+            إضافة جاذبية (Accent Light)
+          </label>
+          <div className="flex flex-wrap gap-2">
+            {ACCENT_LIGHTS.map((effect) => (
+              <button
+                key={effect.id}
+                onClick={() => handlePromptSet(effect.prompt)}
+                disabled={!hasImage || isProcessing}
+                className="flex-grow text-xs text-center p-2 bg-zinc-800 rounded-lg hover:bg-zinc-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-zinc-700/50 flex items-center justify-center gap-1.5"
+                title={effect.name}
+              >
+                <span>{effect.icon}</span>
+                <span>{effect.name}</span>
+              </button>
+            ))}
           </div>
         </div>
 
