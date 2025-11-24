@@ -60,7 +60,7 @@ export const PreviewArea: React.FC<PreviewAreaProps> = ({
   // Render Empty State
   if (!hasImage) {
     return (
-      <div className="flex-1 flex flex-col items-center justify-center bg-zinc-950 p-8 relative overflow-hidden">
+      <div className="flex-1 flex flex-col items-center justify-center p-8 relative overflow-hidden">
         {/* Background Grid Pattern */}
         <div className="absolute inset-0 opacity-10" 
              style={{ backgroundImage: 'radial-gradient(#4b5563 1px, transparent 1px)', backgroundSize: '30px 30px' }}>
@@ -102,7 +102,7 @@ export const PreviewArea: React.FC<PreviewAreaProps> = ({
 
   // Render Image Preview
   return (
-    <div className="flex-1 bg-zinc-950 relative flex items-center justify-center p-4 lg:p-12 overflow-hidden select-none">
+    <div className="flex-1 relative flex items-center justify-center p-4 lg:p-12 overflow-hidden select-none">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 opacity-5" 
            style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '24px 24px' }}>

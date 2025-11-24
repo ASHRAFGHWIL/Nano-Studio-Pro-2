@@ -126,10 +126,10 @@ const App: React.FC = () => {
   const canRedo = imageState.historyIndex < imageState.history.length - 1;
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen bg-zinc-950 text-white overflow-hidden">
+    <div className="flex flex-col lg:flex-row h-screen text-white overflow-hidden">
       
       {/* Mobile Header */}
-      <div className="lg:hidden p-4 border-b border-zinc-800 flex justify-between items-center bg-zinc-900">
+      <div className="lg:hidden p-4 border-b border-zinc-700/50 flex justify-between items-center bg-zinc-900/70 backdrop-blur-xl">
         <h1 className="serif text-xl font-bold">نانو ستوديو</h1>
         {status === StudioStatus.PROCESSING && <span className="text-xs text-yellow-500 animate-pulse">جاري المعالجة</span>}
       </div>
